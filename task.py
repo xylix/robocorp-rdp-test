@@ -31,20 +31,14 @@ logging.basicConfig(
 LOGGER = logging.getLogger(__name__)
 
 
-# httprequest = Request("https://icanhazip.com", headers={"Accept": "application/json"})
-# with urlopen(httprequest) as response:
-#     LOGGER.info(response.status)
-#     LOGGER.info(response.read().decode())
-
-
 from pyngrok import ngrok
 # from RPA.Robocorp.Vault import Vault
 
 # VAULT = Vault()
 
-def reading_secrets():
-    # return VAULT.get_secret('ngrok_token')["token"]
-    return "1wPhmcFX8Gnt" + "71sHAFwK7m2zhYQ" + "_ukYkUkMJaYYrfYAKEkbu"
+# def reading_secrets():
+#     # return VAULT.get_secret('ngrok_token')["token"]
+#     
 
 
 # ngrok.set_auth_token()
