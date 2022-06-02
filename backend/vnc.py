@@ -9,7 +9,7 @@ import time
 class VNC:
 
     def __init__(self, ip='0.0.0.0', port=7000):
-        print("serving on port 7000")
+        print("opening VNC on port 7000")
         self.ip = ip
         self.port = port
 
