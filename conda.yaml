@@ -11,10 +11,29 @@ dependencies:
 
   - pip=20.1
   - wheel=0.37.1
-  - git=2.35.3
+  # - git=2.35.3
   # - nodejs=16.14.2
 
   - pip:
-    - git+https://github.com/FurySwordXD/VNC.git
     # rccPostInstall:
     # - npm install node-rdpjs
+    - bottle==0.12.17
+    - bottle-websocket==0.2.9
+    - cffi==1.13.1
+    - Eel==0.11.0
+    - future==0.18.2
+    - gevent==1.4.0
+    - gevent-websocket==0.10.1
+    - greenlet==0.4.15
+    - mss==4.0.3
+    - Pillow==6.1.0
+    - PyAutoGUI==0.9.45
+    - pycparser==2.19
+    - PyGetWindow==0.0.6
+    - PyMsgBox==1.0.7
+    - pynput==1.4.2
+    - PyRect==0.1.4
+    - PyScreeze==0.1.22
+    - PyTweening==1.0.3
+    - six==1.12.0
+    - whichcraft==0.6.1
