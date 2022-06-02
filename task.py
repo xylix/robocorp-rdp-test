@@ -5,12 +5,20 @@ from time import sleep
 from urllib.request import urlopen, Request
 # import app
 
+from sys import platform
+if platform == "linux" or platform == "linux2":
+    # linux
+    from xvfbwrapper import Xvfb
+    vdisplay = Xvfb()
+    vdisplay.start()
+    print(os.environ['DISPLAY'])
+elif platform == "darwin":
+    # OS X
+    pass
+elif platform == "win32":
+    # Windows...
+    pass
 
-from xvfbwrapper import Xvfb
-vdisplay = Xvfb()
-vdisplay.start()
-
-print(os.environ['DISPLAY'])
 
 stdout = logging.StreamHandler(sys.stdout)
 
