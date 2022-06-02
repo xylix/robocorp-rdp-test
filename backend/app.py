@@ -68,7 +68,7 @@ def main():
                 #print(data)
                 input_manager.transmit_input(mouse_pos=data['pos'], mouse_up=data['button'])
 
-    # eel.start('index.html', block=False, port=8080)
+    eel.start('index.html', block=False, port=8080)
 
     while True:
         try:
