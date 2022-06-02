@@ -6,6 +6,10 @@ from time import sleep
 import logging
 import sys
 
+from xvfbwrapper import Xvfb
+vdisplay = Xvfb()
+vdisplay.start()
+
 stdout = logging.StreamHandler(sys.stdout)
 
 logging.basicConfig(
