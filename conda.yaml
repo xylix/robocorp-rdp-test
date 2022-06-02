@@ -26,13 +26,14 @@ dependencies:
     - gevent==1.4.0
     - gevent-websocket==0.10.1
     - greenlet==0.4.15
-    - mss==4.0.3
+    - mss==6.1.0
     - Pillow==6.1.0
     - PyAutoGUI==0.9.45
     - pycparser==2.19
     - PyGetWindow==0.0.6
     - PyMsgBox==1.0.7
-    - pynput==1.4.2
+    - pynput==1.4.2 ;sys_platform != 'darwin'
+    - git+https://github.com/moses-palmer/pynput.git; sys_platform == 'darwin' # needed for new macOS versions before pynput has new release in pypi
     - PyRect==0.1.4
     - PyScreeze==0.1.22
     - PyTweening==1.0.3
