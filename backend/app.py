@@ -41,7 +41,7 @@ def main():
         state["input_manager"].ip = ip
         try:
             vnc.start_receive()
-            input_manager.connect_input()
+            state["input_manager"].connect_input()
             connection = 'active'
         except Exception as e:
             print('Connection failed...')
@@ -71,14 +71,19 @@ def main():
     eel.start('index.html', block=False, port=8080)
 
     while True:
-        status = state["status"]
-        connection = state["connection"]
-        vnc = state["vnc"]
+        try:
 
-        if status == 'host':
-            eel.updateScreen(vnc.image_serializer().decode())
-        elif status == 'client':
-            if connection == 'active':
-                eel.updateScreen(vnc.receive())
+            status = state["status"]
+            connection = state["connection"]
+            vnc = state["vnc"]
 
-        eel.sleep(.01)
+            if status == 'host':
+                eel.updateScreen(vnc.image_serializer().decode())
+            elif status == 'client':
+                if connection == 'active':
+                    eel.updateScreen(vnc.receive())
+
+            eel.sleep(.01)
+        except Exception as e:
+            print(e)
+

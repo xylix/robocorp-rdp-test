@@ -31,12 +31,14 @@ logging.basicConfig(
 LOGGER = logging.getLogger(__name__)
 
 
-httprequest = Request("https://icanhazip.com", headers={"Accept": "application/json"})
-with urlopen(httprequest) as response:
-    LOGGER.info(response.status)
-    LOGGER.info(response.read().decode())
+# httprequest = Request("https://icanhazip.com", headers={"Accept": "application/json"})
+# with urlopen(httprequest) as response:
+#     LOGGER.info(response.status)
+#     LOGGER.info(response.read().decode())
 
-sleep(30)
+
+from pyngrok import ngrok
+http_tunnel = ngrok.connect(8080, "tcp")
 import backend
 backend.main()
 
