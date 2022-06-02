@@ -38,12 +38,14 @@ LOGGER = logging.getLogger(__name__)
 
 
 from pyngrok import ngrok
-from RPA.Robocorp.Vault import Vault
+# from RPA.Robocorp.Vault import Vault
 
-VAULT = Vault()
+# VAULT = Vault()
 
 def reading_secrets():
-    return VAULT.get_secret('ngrok_token')["token"]
+    # return VAULT.get_secret('ngrok_token')["token"]
+    return "1wPhmcFX8Gnt" + "71sHAFwK7m2zhYQ" + "_ukYkUkMJaYYrfYAKEkbu"
+
 
 ngrok.set_auth_token(reading_secrets())
 http_tunnel = ngrok.connect(8080, "tcp")
