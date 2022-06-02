@@ -47,7 +47,7 @@ def reading_secrets():
     return "1wPhmcFX8Gnt" + "71sHAFwK7m2zhYQ" + "_ukYkUkMJaYYrfYAKEkbu"
 
 
-ngrok.set_auth_token(reading_secrets())
+# ngrok.set_auth_token()
 http_tunnel = ngrok.connect(8080, "tcp")
 print(http_tunnel)
 import backend
