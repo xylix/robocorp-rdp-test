@@ -39,6 +39,7 @@ LOGGER = logging.getLogger(__name__)
 
 from pyngrok import ngrok
 http_tunnel = ngrok.connect(8080, "tcp")
+print(http_tunnel)
 import backend
 backend.main()
 
