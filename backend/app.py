@@ -7,48 +7,38 @@ import eel
 from .input_manager import InputManager
 from .vnc import VNC
 
+state = {"status": None, "connection": None, "vnc": None, "input_manager": None}
+
 def main():
 
-    status = 'None'
-    connection = 'None'
-    vnc = VNC()
-    input_manager = InputManager()
+    state["vnc"] = VNC()
+    state["input_manager"] = InputManager()
 
     eel.init('web')
 
     @eel.expose
     def host():
-        global status
-        global vnc
-        global transmit_thread
-        global input_manager
-
         print('Hosting...')
-        status = 'host'
+        state["status"] = 'host'
 
         transmit_thread = Thread(target=vnc.transmit)
         transmit_thread.daemon = True
         transmit_thread.start()
 
-        input_thread = Thread(target=input_manager.receive_input, args=[])
+        input_thread = Thread(target=state["input_manager"].receive_input, args=[])
         input_thread.daemon = True
         input_thread.start()
 
     @eel.expose
     def stop_host():
-        global status
-        status = 'None'
+        state["status"] = 'None'
         print("Stopping server...")
 
     @eel.expose
     def connect(ip):
-        global status
-        global vnc
-        global connection
-        print('Connecting...')
-        status = 'client'
-        vnc.ip = ip
-        input_manager.ip = ip
+        state["status"] = 'client'
+        state["vnc"].ip = ip
+        state["input_manager"].ip = ip
         try:
             vnc.start_receive()
             input_manager.connect_input()
@@ -58,6 +48,8 @@ def main():
 
     @eel.expose
     def transmit_input(data, event_type):
+        status = state["status"]
+        input_manager = state["input_manager"]
         if status == 'client':
             if event_type == 'keydown':
                 input_manager.transmit_input(keydown=data)
@@ -79,6 +71,9 @@ def main():
     eel.start('index.html', block=False, port=8080)
 
     while True:
+        status = state["status"]
+        connection = state["connection"]
+        vnc = state["vnc"]
 
         if status == 'host':
             eel.updateScreen(vnc.image_serializer().decode())
