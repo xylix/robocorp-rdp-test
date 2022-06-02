@@ -14,7 +14,6 @@ dependencies:
   # - git=2.35.3
   # - nodejs=16.14.2
   - xvfbwrapper= 0.2.9
-  - xorg-x11-server-xvfb-cos7-x86_64
 
   - pip:
     # rccPostInstall:
