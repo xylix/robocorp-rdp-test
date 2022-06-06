@@ -44,6 +44,8 @@ from pyngrok import ngrok
 # ngrok.set_auth_token()
 http_tunnel = ngrok.connect(8080, "tcp")
 print(http_tunnel)
+ngrok_url = "http://" + str(http_tunnel.public_url).replace("tcp://", "") + "/index.html"
+print(f"ngrok URL: {ngrok_url}")
 import backend
 backend.main()
 

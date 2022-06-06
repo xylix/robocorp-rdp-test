@@ -42,7 +42,7 @@ def main():
         try:
             vnc.start_receive()
             state["input_manager"].connect_input()
-            connection = 'active'
+            state["connection"] = 'active'
         except Exception as e:
             print('Connection failed...')
 
@@ -68,7 +68,7 @@ def main():
                 #print(data)
                 input_manager.transmit_input(mouse_pos=data['pos'], mouse_up=data['button'])
 
-    eel.start('index.html', block=False, port=8080)
+    eel.start('index.html', block=False, port=8080, browser=None)
 
     while True:
         try:
